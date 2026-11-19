@@ -1,0 +1,24 @@
+{
+  "regions": {
+    "eu-central-1": {
+      "Vpcs": [{ "VpcId": "vpc-1", "CidrBlock": "10.0.0.0/16" }],
+      "Subnets": [
+        { "SubnetId": "subnet-1", "VpcId": "vpc-1", "CidrBlock": "10.0.1.0/24", "AvailabilityZone": "eu-central-1a" }
+      ],
+      "NetworkAcls": [
+        {
+          "NetworkAclId": "acl-noreturn",
+          "VpcId": "vpc-1",
+          "IsDefault": false,
+          "Associations": [{ "SubnetId": "subnet-1", "NetworkAclId": "acl-noreturn" }],
+          "Entries": [
+            { "RuleNumber": 100, "Protocol": "6", "RuleAction": "allow", "Egress": false, "CidrBlock": "0.0.0.0/0", "PortRange": { "From": 443, "To": 443 } },
+            { "RuleNumber": 32767, "Protocol": "-1", "RuleAction": "deny", "Egress": false, "CidrBlock": "0.0.0.0/0" },
+            { "RuleNumber": 100, "Protocol": "6", "RuleAction": "allow", "Egress": true, "CidrBlock": "0.0.0.0/0", "PortRange": { "From": 443, "To": 443 } },
+            { "RuleNumber": 32767, "Protocol": "-1", "RuleAction": "deny", "Egress": true, "CidrBlock": "0.0.0.0/0" }
+          ]
+        }
+      ]
+    }
+  }
+}

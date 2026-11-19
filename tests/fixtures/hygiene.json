@@ -1,0 +1,24 @@
+{
+  "regions": {
+    "eu-central-1": {
+      "Vpcs": [{ "VpcId": "vpc-7", "CidrBlock": "10.7.0.0/16" }],
+      "Subnets": [],
+      "NetworkAcls": [
+        {
+          "NetworkAclId": "acl-orphan",
+          "VpcId": "vpc-7",
+          "IsDefault": false,
+          "Associations": [],
+          "Entries": [
+            { "RuleNumber": 100, "Protocol": "6", "RuleAction": "allow", "Egress": false, "CidrBlock": "10.7.1.0/24", "PortRange": { "From": 1024, "To": 65535 } },
+            { "RuleNumber": 101, "Protocol": "6", "RuleAction": "allow", "Egress": false, "CidrBlock": "10.7.1.0/24", "PortRange": { "From": 443, "To": 443 } },
+            { "RuleNumber": 102, "Protocol": "6", "RuleAction": "allow", "Egress": false, "CidrBlock": "10.7.2.0/24", "PortRange": { "From": 8080, "To": 8080 } },
+            { "RuleNumber": 32767, "Protocol": "-1", "RuleAction": "deny", "Egress": false, "CidrBlock": "0.0.0.0/0" },
+            { "RuleNumber": 100, "Protocol": "-1", "RuleAction": "allow", "Egress": true, "CidrBlock": "0.0.0.0/0" },
+            { "RuleNumber": 32767, "Protocol": "-1", "RuleAction": "deny", "Egress": true, "CidrBlock": "0.0.0.0/0" }
+          ]
+        }
+      ]
+    }
+  }
+}

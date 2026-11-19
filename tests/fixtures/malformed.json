@@ -1,0 +1,4 @@
+{
+  "tool": "aws-nacl-audit",
+  "note": "a payload with no regions object at all"
+}

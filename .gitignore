@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+.coverage
+
+# Recorded payloads from a live --dump-json run; the committed ones live in
+# examples/ and tests/fixtures/ and must stay tracked.
+/dump-*.json
+!examples/**
+!tests/fixtures/**

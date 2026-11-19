@@ -1,0 +1,39 @@
+{
+  "regions": {
+    "eu-central-1": {
+      "Vpcs": [{ "VpcId": "vpc-6", "CidrBlock": "10.6.0.0/16" }],
+      "Subnets": [
+        { "SubnetId": "subnet-6a", "VpcId": "vpc-6", "CidrBlock": "10.6.1.0/24", "AvailabilityZone": "eu-central-1a" }
+      ],
+      "NetworkAcls": [
+        {
+          "NetworkAclId": "acl-clean",
+          "VpcId": "vpc-6",
+          "IsDefault": false,
+          "Tags": [{ "Key": "Name", "Value": "clean" }, { "Key": "Owner", "Value": "platform" }],
+          "Associations": [{ "SubnetId": "subnet-6a", "NetworkAclId": "acl-clean" }],
+          "Entries": [
+            { "RuleNumber": 100, "Protocol": "6", "RuleAction": "allow", "Egress": false, "CidrBlock": "0.0.0.0/0", "PortRange": { "From": 443, "To": 443 } },
+            { "RuleNumber": 200, "Protocol": "6", "RuleAction": "allow", "Egress": false, "CidrBlock": "0.0.0.0/0", "PortRange": { "From": 1024, "To": 65535 } },
+            { "RuleNumber": 32767, "Protocol": "-1", "RuleAction": "deny", "Egress": false, "CidrBlock": "0.0.0.0/0" },
+            { "RuleNumber": 100, "Protocol": "6", "RuleAction": "allow", "Egress": true, "CidrBlock": "0.0.0.0/0", "PortRange": { "From": 1024, "To": 65535 } },
+            { "RuleNumber": 200, "Protocol": "6", "RuleAction": "allow", "Egress": true, "CidrBlock": "0.0.0.0/0", "PortRange": { "From": 443, "To": 443 } },
+            { "RuleNumber": 32767, "Protocol": "-1", "RuleAction": "deny", "Egress": true, "CidrBlock": "0.0.0.0/0" }
+          ]
+        },
+        {
+          "NetworkAclId": "acl-default6",
+          "VpcId": "vpc-6",
+          "IsDefault": true,
+          "Associations": [],
+          "Entries": [
+            { "RuleNumber": 100, "Protocol": "-1", "RuleAction": "allow", "Egress": false, "CidrBlock": "0.0.0.0/0" },
+            { "RuleNumber": 32767, "Protocol": "-1", "RuleAction": "deny", "Egress": false, "CidrBlock": "0.0.0.0/0" },
+            { "RuleNumber": 100, "Protocol": "-1", "RuleAction": "allow", "Egress": true, "CidrBlock": "0.0.0.0/0" },
+            { "RuleNumber": 32767, "Protocol": "-1", "RuleAction": "deny", "Egress": true, "CidrBlock": "0.0.0.0/0" }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+# Threshold overrides for aws-nacl-audit.
+#   aws-nacl-audit --region eu-central-1 --rules examples/rules.yml
+# Any flag passed on the command line still wins over the value here.
+
+# Linux picks its source ports from 32768-60999. Narrow the expected return
+# range only if every client of these subnets is a Linux host — an NLB, a NAT
+# gateway or an AWS-managed service will use 1024-65535.
+ephemeral_range: 1024-65535
+
+# Ports that must never be reachable from 0.0.0.0/0.
+admin_ports: [22, 3389, 3306, 5432, 6379, 27017, 9200, 11211]
+
+# Widest inbound port range from anywhere before it is worth a warning.
+max_open_ports: 10
+
+# Leave at least this much room between consecutive rule numbers, so the next
+# change can be inserted instead of renumbering live rules.
+min_rule_gap: 10
+
+# Warn when an ACL reaches the per-direction entry quota.
+entry_quota: 20
+
+# Tag keys every ACL must carry.
+require_tags: [Owner]

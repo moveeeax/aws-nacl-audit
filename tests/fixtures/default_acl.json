@@ -1,0 +1,26 @@
+{
+  "regions": {
+    "eu-central-1": {
+      "Vpcs": [
+        { "VpcId": "vpc-3", "CidrBlock": "10.3.0.0/16", "Tags": [{ "Key": "Name", "Value": "staging" }] }
+      ],
+      "Subnets": [
+        { "SubnetId": "subnet-3a", "VpcId": "vpc-3", "CidrBlock": "10.3.1.0/24", "AvailabilityZone": "eu-central-1a" }
+      ],
+      "NetworkAcls": [
+        {
+          "NetworkAclId": "acl-default3",
+          "VpcId": "vpc-3",
+          "IsDefault": true,
+          "Associations": [{ "SubnetId": "subnet-3a", "NetworkAclId": "acl-default3" }],
+          "Entries": [
+            { "RuleNumber": 100, "Protocol": "-1", "RuleAction": "allow", "Egress": false, "CidrBlock": "0.0.0.0/0" },
+            { "RuleNumber": 32767, "Protocol": "-1", "RuleAction": "deny", "Egress": false, "CidrBlock": "0.0.0.0/0" },
+            { "RuleNumber": 100, "Protocol": "-1", "RuleAction": "allow", "Egress": true, "CidrBlock": "0.0.0.0/0" },
+            { "RuleNumber": 32767, "Protocol": "-1", "RuleAction": "deny", "Egress": true, "CidrBlock": "0.0.0.0/0" }
+          ]
+        }
+      ]
+    }
+  }
+}
